@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker login docker.io -u rodrigoaf -p ${{ secrets.DH_PASSWORD }} && docker build . -f Dockerfile -t rodrigoaf/codeeducation:latest && docker push rodrigoaf/codeeducation:latest
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u rodrigoaf --password-stdin && docker build . -f Dockerfile -t rodrigoaf/codeeducation:latest && docker push rodrigoaf/codeeducation:latest
